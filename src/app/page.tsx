@@ -1,101 +1,104 @@
-import Image from "next/image";
+import Image from "next/image"
+import { Particles } from "./Components/Particles"
+import Contact from "./Components/Contact"
+import Footer from "./Components/Footer"
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <main className="flex flex-col items-center justify-center min-h-screen">
+      <section id="home" className="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
+        <Particles className="absolute inset-0" />
+        <div className="relative z-10 text-center">
+          <h1 className="text-5xl md:text-7xl font-bold mb-4 animate-text bg-gradient-to-r from-teal-500 via-purple-500 to-orange-500 bg-clip-text text-transparent">
+            Welcome to NeoVibe
+          </h1>
+          <p className="text-xl md:text-2xl mb-8 text-gray-300">Experience reality reimagined</p>
+          <button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-full text-lg transition-all duration-300 transform hover:scale-105">
+            Enter the NeoVibe
+          </button>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+        <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-black to-transparent"></div>
+      </section>
+
+      <section id="experiences" className="w-full py-20 bg-gray-900">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-4xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
+            Immersive Experiences
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {["Adventure", "Education", "Creativity"].map((exp, index) => (
+              <div
+                key={exp}
+                className="bg-gray-800 rounded-lg p-6 transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/50"
+              >
+                <Image
+                  src={`/images/${exp.toLowerCase()}.jpg`}
+                  alt={exp}
+                  width={400}
+                  height={200}
+                  className="w-full h-48 object-cover rounded-md mb-4"
+                />
+                <h3 className="text-2xl font-semibold mb-2">{exp}</h3>
+                <p className="text-gray-400">
+                  Explore new worlds and push the boundaries of {exp.toLowerCase()} in virtual reality.
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="technology" className="w-full py-20 bg-black">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-4xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
+            Cutting-edge Technology
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h3 className="text-2xl font-semibold mb-4">NeuroSync Interface</h3>
+              <p className="text-gray-400 mb-4">
+                Our proprietary NeuroSync technology creates a seamless connection between your mind and the virtual
+                world, offering unparalleled immersion and responsiveness.
+              </p>
+              <ul className="list-disc list-inside text-gray-400">
+                <li>Ultra-low latency response</li>
+                <li>Adaptive neural feedback</li>
+                <li>Emotion-driven environment interaction</li>
+              </ul>
+            </div>
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-pink-600 rounded-full animate-pulse"></div>
+              <Image
+                src="/images/Cutting-edge.jpg"
+                alt="NeuroSync Technology"
+                width={400}
+                height={400}
+                className="relative z-10 rounded-full"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" className="w-full py-20 bg-gray-900">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-4xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
+            About NeoVibe
+          </h2>
+          <p className="text-xl text-gray-300 mb-8">
+            At NeoVibe, we're not just creating virtual reality experiences; we're sculpting the future of human
+            interaction and exploration. Our team of visionaries, engineers, and artists work tirelessly to push the
+            boundaries of what's possible in the digital realm.
+          </p>
+          <button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-full text-lg transition-all duration-300 transform hover:scale-105">
+            Join Our Team
+          </button>
+        </div>
+      </section>
+
+      <Contact />
+      <Footer />
+    </main>
+  )
 }
+
